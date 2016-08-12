@@ -2,9 +2,11 @@ var express = require('express');
 var Mock 	= require('mockjs');
 var app 	= express();
 
-var router 	= require('./router');
 
-console.log(router)
+app.use(express.static('./publish'));
+
+
+var router 	= require('./router');
 
 doRouter(router.router);
 
@@ -19,9 +21,10 @@ function doRouter(r) {
 	}
 }
 
-var server = app.listen(3000, function () {
+var server = app.listen(3000, function (a, b) {
 	var host = server.address().address;
 	var port = server.address().port;
 
 	console.log('Example app listening at http://%s:%s', host, port);
 });
+
